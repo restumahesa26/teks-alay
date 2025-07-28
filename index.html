@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G3n3r4t0r T3k5 4l4y P4l1n9 K3ce</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        /* Custom font for the "alay" feel */
+        .font-alay {
+            font-family: 'Pacifico', cursive;
+        }
+
+        /* Animated glitter/sparkle background */
+        @keyframes sparkle {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        body {
+            background: linear-gradient(-45deg, #ff00ff, #ff0066, #33ccff, #9933ff);
+            background-size: 400% 400%;
+            animation: sparkle 15s ease infinite;
+        }
+
+        /* Glowing text effect for the title */
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px #ff00de, 0 0 30px #ff00de; }
+            50% { text-shadow: 0 0 20px #fff, 0 0 30px #00aaff, 0 0 40px #00aaff; }
+        }
+        .text-glow {
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        /* Custom styling for the main card */
+        .card-alay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid #ff00ff;
+            box-shadow: 0 0 20px #ff00ff, inset 0 0 10px #ff00ff;
+        }
+        
+        /* Custom scrollbar for a more "styled" look */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #2d3748;
+            border-radius: 10px;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #f0f, #0cf);
+            border-radius: 10px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #0cf, #f0f);
+        }
+
+        /* Custom radio button color */
+        .form-radio {
+            accent-color: #ff00ff;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    
+    <div class="w-full max-w-md mx-auto p-6 md:p-8 rounded-2xl card-alay">
+        <!-- Header Title -->
+        <h1 class="font-alay text-4xl md:text-5xl text-white text-center mb-2 text-glow">
+            G3n3r4t0r T3ks 4l4y
+        </h1>
+        <p class="text-center text-pink-300 mb-6">
+            ~* B1k1n k4l1m4t k4mU m4k1n k3c3 & 94uLz Ab13zZ *~
+        </p>
+
+        <!-- Input Area -->
+        <div class="mb-4">
+            <label for="inputText" class="block text-white text-lg font-alay mb-2">Tulis Sesuatu Disini Cyn...</label>
+            <textarea 
+                id="inputText" 
+                rows="5" 
+                class="w-full p-3 rounded-lg bg-gray-800 text-white border-2 border-cyan-400 focus:border-pink-500 focus:ring-2 focus:ring-pink-500 transition duration-300" 
+                placeholder="contoh: aku sayang kamu selamanya..."
+            ></textarea>
+        </div>
+
+        <!-- Style Chooser -->
+        <div class="mb-4">
+            <label class="block text-white text-lg font-alay mb-2">Pilih Gaya Alay...</label>
+            <div class="flex justify-around text-white">
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="radio" name="style" value="campur" class="form-radio" checked>
+                    <span>Gaya Campur</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="radio" name="style" value="vokal" class="form-radio">
+                    <span>Tanpa Vokal & Spasi</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Output Area -->
+        <div class="mb-6">
+            <label for="outputText" class="block text-white text-lg font-alay mb-2">H4s1LnY4 B3bZ...</label>
+            <div 
+                id="outputText" 
+                class="w-full p-3 rounded-lg bg-gray-900 text-cyan-300 border-2 border-pink-500 min-h-[120px] whitespace-pre-wrap break-words"
+            ></div>
+        </div>
+
+        <!-- Copy Button -->
+        <div class="text-center">
+            <button id="copyBtn" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full transition duration-300">
+                Copy Teks
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Wait for the DOM to be fully loaded before running the script
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get elements from the DOM
+            const inputText = document.getElementById('inputText');
+            const outputText = document.getElementById('outputText');
+            const copyBtn = document.getElementById('copyBtn');
+            const styleRadios = document.querySelectorAll('input[name="style"]');
+
+            // Alay style 1: Mixed case and number substitution
+            function generateAlayCampur(text) {
+                const alayMap = {
+					// Huruf
+					'a': '4', 'i': '1', 'u': 'U', 'e': '3', 'o': '0',
+					'g': '9', 's': '5', 'b': '8', 't': '7', 'z': '2',
+
+					// Kata populer
+					'kamu': 'k4mU', 'aku': '4kU', 'sayang': 's4y4n9', 'cinta': 'c1nt4', 'selalu': 'sl4lU',
+					'yang': 'y4nK', 'keren': 'k3r3n', 'banget': 'b4n93tZ', 'bang': 'b4n9', 'ganteng': '94nT3n9',
+					'cewek': 'c3w3k', 'cowok': 'c0w0k', 'kangen': 'k4n93n', 'mantap': 'm4nt4p', 'apa': '4p4',
+					'iya': '1y4', 'tidak': 't1d4k', 'oke': '0k3', 'udah': 'Ud4h', 'pasti': 'p45t1',
+					'teman': 't3m4n', 'sahabat': 's4h4b4t', 'malam': 'm4l4m', 'pagi': 'p49i',
+					'selamat': 's3l4m4t', 'makasih': 'm4k4s1h', 'terima kasih': 't3r1m4 k4s1h',
+					'assalamualaikum': '4554l4mu4l41kum'
+				};
+
+                let lowerCaseText = text.toLowerCase();
+                let result = '';
+                let useUpperCase = true;
+
+                Object.keys(alayMap).forEach(word => {
+                    if (word.length > 1) {
+                        const regex = new RegExp(`\\b${word}\\b`, 'g');
+                        lowerCaseText = lowerCaseText.replace(regex, alayMap[word]);
+                    }
+                });
+
+                for (let i = 0; i < lowerCaseText.length; i++) {
+                    let char = lowerCaseText[i];
+                    if (char.match(/^[a-z0-9]+$/i)) {
+                        char = alayMap[char] || char;
+                        result += useUpperCase ? char.toUpperCase() : char.toLowerCase();
+                        useUpperCase = !useUpperCase;
+                    } else {
+                        result += char;
+                        useUpperCase = true; 
+                    }
+                }
+                return result;
+            }
+
+            // Alay style 2: Remove vowels and spaces with new rules
+            function generateAlayTanpaVokal(text) {
+                const words = text.toLowerCase().split(/\s+/).filter(w => w.length > 0);
+                const processedWords = words.map(word => {
+                    // Rule: Keep words with 2 letters or less
+                    if (word.length <= 2) {
+                        return word;
+                    }
+
+                    const vowels = word.match(/[aiueo]/gi) || [];
+                    
+                    // Rule: For 3 or 4-letter words with 2 vowels, keep the first vowel
+                    if ((word.length === 3 || word.length === 4) && vowels.length === 2) {
+                        let newWord = '';
+                        let firstVowelFound = false;
+                        for (const char of word) {
+                            if ('aiueo'.includes(char)) {
+                                if (!firstVowelFound) {
+                                    newWord += char; // Keep the first vowel
+                                    firstVowelFound = true;
+                                }
+                                // Skip subsequent vowels
+                            } else {
+                                newWord += char; // Keep consonants
+                            }
+                        }
+                        return newWord;
+                    }
+
+                    // Default rule: remove all vowels
+                    return word.replace(/[aiueo]/gi, '');
+                });
+
+                return processedWords.join('');
+            }
+
+
+            // Main function to update the output based on selected style
+            function updateOutput() {
+                const originalText = inputText.value;
+                const selectedStyle = document.querySelector('input[name="style"]:checked').value;
+
+                if (originalText.trim() === '') {
+                    outputText.innerText = ''; // Clear output if input is empty
+                    return;
+                }
+
+                let alayResult = '';
+                if (selectedStyle === 'campur') {
+                    alayResult = generateAlayCampur(originalText);
+                } else if (selectedStyle === 'vokal') {
+                    alayResult = generateAlayTanpaVokal(originalText);
+                }
+                
+                outputText.innerText = alayResult;
+            }
+
+            // Event listener for the input textarea to auto-generate
+            inputText.addEventListener('input', updateOutput);
+
+            // Event listeners for radio buttons to change style on the fly
+            styleRadios.forEach(radio => {
+                radio.addEventListener('change', updateOutput);
+            });
+
+            // Event listener for the copy button
+            copyBtn.addEventListener('click', () => {
+                const textToCopy = outputText.innerText;
+                if (!textToCopy) return;
+
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = textToCopy;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                
+                try {
+                    document.execCommand('copy');
+                    copyBtn.innerText = 'Teks Dicopy!';
+                    setTimeout(() => {
+                        copyBtn.innerText = 'Copy Teks';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Gagal menyalin teks: ', err);
+                    copyBtn.innerText = 'Gagal Copy';
+                     setTimeout(() => {
+                        copyBtn.innerText = 'Copy Teks';
+                    }, 2000);
+                }
+
+                document.body.removeChild(tempTextArea);
+            });
+        });
+    </script>
+</body>
+</html>
